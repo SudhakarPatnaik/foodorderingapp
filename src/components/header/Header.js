@@ -1,8 +1,12 @@
 
 import logo from "../../assets/logo.jpg"; // TODO : struggeled to set the path 
 import cartIcon from "../../assets/cart.png";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+
+    const cartItems = useSelector((store) => store.cart.items);
 
     return (
         <div className="header">
@@ -11,7 +15,9 @@ const Header = () => {
             <img style={{ height: "25px", width: "25px", position: "relative", top: "50px", left: "150px" }} src="https://www.freeiconspng.com/uploads/search-icon-png-2.png" />
             <div style={{ fontSize: "20px", fontWeight: "bold", padding: "50px", marginLeft: "100px" }}>Search</div>
             <img src={cartIcon} style={{ height: "25px", width: "25px", position: "relative", top: "50px", left: "150px" }} />
-            <div style={{ fontSize: "20px", fontWeight: "bold", padding: "50px", marginLeft: "100px" }}>Cart</div>
+            <Link to={"/cartDetails"}>
+                <div style={{ cursor: "pointer", fontSize: "20px", fontWeight: "bold", padding: "50px", marginLeft: "100px" }}>Cart {cartItems.length}</div>
+            </Link>
             <div style={{ fontSize: "20px", fontWeight: "bold", padding: "50px", marginLeft: "100px" }}>Sudhakar</div>
         </div>
     );

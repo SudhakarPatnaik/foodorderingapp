@@ -28,30 +28,9 @@ const RestaurantMenuDetails = (props) => {
     }
 
     return (
-        <div style={{ position: "absolute", height: "100%", width: "90%", backgroundColor: "black", margin: "50px" }}>
+        <div style={{ position: "absolute", height: "100%", width: "90%", margin: "50px" }}>
             {restaurantMenuDetails && restaurantMenuDetails.map((category) => (
                 <MenuCategory category={category}></MenuCategory>
-                /*<div className="dish-container">
-
-                    <div className="row" onClick={() => toggleMenu(showHideToggle)}>{category.card.card.title}</div>
-                    <img style={{ position: "relative", height: "20px", width: "20px", bottom: "50px", left: "900px", cursor: "pointer" }} src={downArrow} />
-
-
-                    {showHideToggle &&
-                        category.card.card.itemCards.map((dish) => (
-                            <div className="dish-card">
-                                <div className="dish-name">  {dish.card.info.name}</div>
-                                <div> &#8377;{(dish.card.info.price) / 100}</div>
-                                <div className="dish-description">  {dish.card.info.description}
-                                    <img className="image-container" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" + dish?.card?.info?.imageId} />
-                                    <div className="add-button">+Add</div>
-                                </div>
-
-                            </div>
-                        ))
-                    }
-
-                </div>*/
             ))
             }
         </div>

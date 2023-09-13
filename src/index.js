@@ -7,19 +7,25 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RestaurantMenuDetails from './components/Body/RestaurantMenuDetails';
 import Error from './components/Error';
 import Body from './components/Body/Body';
+import CartDetails from './components/Body/CartDetails';
+import Home from './components/Home/Home';
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      {
+      /*{
         path: "/",
-        element: <Body />
-      },
+        element: <Home />
+      },*/
       {
         path: "/foodDetails/:resId",
         element: <RestaurantMenuDetails />
+      },
+      {
+        path: "/cartDetails",
+        element: <CartDetails />
       }
     ],
     errorElement: <Error />
