@@ -1,24 +1,53 @@
 import { useEffect, useState } from "react";
 import Restaurant from "./Restaurant";
 import Recommendations from "./Recommendations";
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurants } from "../../redux/restaurantSlice";
 
 const Body = () => {
-
+    const restaurants = useSelector(state => state.restaurants.restaurants);//  SAGA 7
+    const dispatch = useDispatch();// SAGA 8
     const [recommendationsObj, setRecommendationsObj] = useState(null);
     const [suggetionsObj, setSuggetionsObj] = useState(null);
     const [topRestaurantsObj, setTopRestaurantsObj] = useState(null);
     const [restaurantsObj, setRestaurantsObj] = useState(null);
 
     useEffect(() => {
-        fetchDataFromServerandPrepareObjects();
-    }, [])
+        dispatch(getRestaurants());// SAGA 9
+        //fetchDataFromServerandPrepareObjects();
+        //saveUsers();
+        prepareFoodInfo(restaurants);
+    }, [dispatch]);
 
-    const fetchDataFromServerandPrepareObjects = async () => {
+    // This method designed before saga
+    /*const fetchDataFromServerandPrepareObjects = async () => {
         const responseFromServer = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.5294194&lng=78.47596720000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const response = await responseFromServer.json();
         if (response?.data?.cards) {
             prepareFoodInfo(response.data.cards);
         }
+    }*/
+
+    const saveUsers = async () => {
+        const user = {
+            fname: 'Sudhakar',
+            lname: 'Patnaik',
+            address: 'Block B-402, Aparna Kanopy Tulip',
+            pincode: '500014'
+        }
+
+        const response = await fetch("https://food2go-10636-default-rtdb.firebaseio.com/users.json",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:
+                    JSON.stringify({
+                        user
+                    }),
+            }
+        );
     }
 
     const prepareFoodInfo = (cards) => {
@@ -45,7 +74,7 @@ const Body = () => {
     }
 
     return (
-        <div>
+        <div style={{ color: "black", marginLeft: "100px", borderRadius: "10px" }}>
             {recommendationsObj &&
                 <div>
                     <h1>Best offers for you</h1>

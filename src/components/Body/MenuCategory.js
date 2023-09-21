@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import downArrow from "../../assets/arrow-down.png";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cartSlice";
@@ -6,7 +6,7 @@ const MenuCategory = ({ category }) => {
     const [toggle, setToggle] = useState(false);
     const dispatch = useDispatch();
 
-    const toggleMenuItems = () => {
+    const toggleMenuItems = (e) => {
         setToggle(!toggle);
     }
 
@@ -17,7 +17,7 @@ const MenuCategory = ({ category }) => {
 
     return (
         <div>
-            <div onClick={toggleMenuItems} style={{ backgroundColor: "grey", display: "flex", flexWrap: "wrap", justifyContent: "space-between", margin: "10px", padding: "20px", borderRadius: "10px" }}>
+            <div id="expand" onClick={toggleMenuItems} style={{ backgroundColor: "grey", display: "flex", flexWrap: "wrap", justifyContent: "space-between", margin: "10px", padding: "20px", borderRadius: "10px" }}>
                 <div onClick={() => setToggle(!toggle)}>
                     {category.card.card.title}
                 </div>
@@ -36,7 +36,7 @@ const MenuCategory = ({ category }) => {
                             <div>
                                 <img style={{ backgroundColor: "black", height: "100px", width: "100px", borderRadius: "10px", top: "20px" }}
                                     src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" + dish?.card?.info?.imageId} />
-                                <div style={{ position: "relative", padding: "3px", cursor: "pointer", bottom: "20px", left: "10px", width: "50px", borderRadius: "10px", backgroundColor: "green", fontWeight: "bold", color: "white" }} onClick={() => addToCart(dish.card.info)}>
+                                <div id="add" onClick={() => addToCart(dish.card.info)} style={{ position: "relative", padding: "3px", cursor: "pointer", bottom: "20px", left: "10px", width: "50px", borderRadius: "10px", backgroundColor: "green", fontWeight: "bold", color: "white" }}>
                                     + Add
                                 </div>
                             </div>

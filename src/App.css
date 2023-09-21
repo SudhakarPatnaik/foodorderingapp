@@ -40,12 +40,14 @@
 }
 
 .res-container {
+
   display: flex;
   flex-wrap: wrap;
-
+  background-color: "#573b8a";
 }
 
 .res-card {
+  background-color: "#573b8a";
   margin: 5px;
   height: 100%;
   width: 300px;
@@ -55,6 +57,7 @@
 }
 
 .recom-card {
+  background-color: "#573b8a";
   margin: 5px;
   height: 100%;
   width: 300px;

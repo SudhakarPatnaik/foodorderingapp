@@ -1,26 +1,57 @@
 import "./Home.css";
-import { useState } from "react";
-import appLogo from "../../assets/Food2GoDark.png"
+import { useRef, useState } from "react";
+import appLogo from "../../assets/Food2GoWithoutbg.png"
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 const Home = () => {
-    const [item, setItem] = useState();
-    const items = ['Cooking gone wrong?', 'Late night at office?', 'Hungry?', 'Unexpected guests?', 'Movie marathon?'];
-    let sequence = document.getElementById("sequence");
-    let i = 0;
-    /* setInterval(function () {
-         if (sequence)
-             setItem(items[i++ % items.length]);
-         // sequence.innerHTML = items[i++ % items.length];
-     }, 3000)*/
+    const signupEmail = useRef(null);
+    const signupPassword = useRef(null);
+    const loginEmail = useRef(null);
+    const loginPassword = useRef(null);
+    const navigate = useNavigate();
+    const validateEmail = (e) => {
+        e.preventDefault();
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signupEmail.current.value)) {
+            if (e.target.innerHTML === 'Sign up') {
+                createUserWithEmailAndPassword(auth, signupEmail.current.value, signupPassword.current.value)
+                    .then((userCredential) => {
+                        // Signed in 
+                        console.log(userCredential.user);
+                        navigate('/container');
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(error.code + ' ' + error.message)
+                    });
+            } else {
+                alert("You have entered an invalid email address!");
+                return (false);
+            }
+        } else {
+            signInWithEmailAndPassword(auth, loginEmail.current.value, loginPassword.current.value)
+                .then((userCredential) => {
+                    // Signed in 
+                    console.log("user authenticated successfully");
+                    navigate('/container');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(error.code + ' ' + error.message)
+                });
+        }
 
-    //})
+    }
 
     return (
         <div>
-            <div style={{ height: "50%", width: "50%", float: "left" }} id="loginSignUp">
+            <div style={{ height: "50%", width: "50%", float: "left", background: "#24243e" }} id="loginSignUp">
                 <div id="header" >
                     <img alt="logo" style={{ borderRadius: "50px", height: "170px", width: "170px" }} className="logo" src={appLogo}></img>
                 </div>
-                <div id="body">
+                <div style={{ height: "543px", width: "50%" }} id="body">
                     <div class="main">
                         <input type="checkbox" id="chk" aria-hidden="true" />
 
@@ -28,18 +59,20 @@ const Home = () => {
                             <form>
                                 <label for="chk" aria-hidden="true">Sign up</label>
                                 <input type="text" name="txt" placeholder="User name" required="" />
-                                <input type="email" name="email" placeholder="Email" required="" />
-                                <input type="password" name="pswd" placeholder="Password" required="" />
-                                <button>Sign up</button>
+                                <input ref={signupEmail} type="email" name="email" placeholder="Email" required="" />
+                                <input ref={signupPassword} type="password" name="pswd" placeholder="Password" required="" />
+                                <button onClick={validateEmail}>Sign up</button>
                             </form>
                         </div>
 
                         <div class="login">
                             <form>
                                 <label for="chk" aria-hidden="true">Login</label>
-                                <input type="email" name="email" placeholder="Email" required="" />
-                                <input type="password" name="pswd" placeholder="Password" required="" />
-                                <button>Login</button>
+                                <input ref={loginEmail} type="email" name="email" placeholder="Email" required="" />
+                                <input ref={loginPassword} type="password" name="pswd" placeholder="Password" required="" />
+                                <Link to={'/container'}>
+                                    <button onClick={validateEmail}>Login</button>
+                                </Link>
                             </form>
                         </div>
                     </div>

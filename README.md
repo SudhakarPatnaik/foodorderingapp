@@ -97,3 +97,16 @@ const cartItems = useSelector((store) => store.cart.items);
 
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ REDUX - end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ REDUX - SAGA
+
+STEP 1 : 
+STEP 2 :
+STEP 3 : create restaurantSlice.js
+STEP 4 : 
+
+
+DR DRR
+9949999499
