@@ -49,7 +49,7 @@ const Home = () => {
         <div>
             <div style={{ height: "50%", width: "50%", float: "left", background: "#24243e" }} id="loginSignUp">
                 <div id="header" >
-                    <img alt="logo" style={{ borderRadius: "50px", height: "170px", width: "170px" }} className="logo" src={appLogo}></img>
+                    <img alt="logo" style={{ height: "125px", width: "125px" }} className="logo" src={appLogo}></img>
                 </div>
                 <div style={{ height: "543px", width: "50%" }} id="body">
                     <div class="main">

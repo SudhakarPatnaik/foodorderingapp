@@ -28,7 +28,7 @@ const RestaurantMenuDetails = (props) => {
     }
 
     return (
-        <div style={{ position: "absolute", height: "100%", width: "90%", margin: "50px" }}>
+        <div style={{ position: "absolute", height: "100%", width: "90%", margin: "50px", boxShadow: "5px 20px 50px #000", backgroundColor: "rgb(36, 36, 62)", borderRadius: "10px", background: "url(https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38)" }}>
             {restaurantMenuDetails && restaurantMenuDetails.map((category) => (
                 <MenuCategory category={category}></MenuCategory>
             ))
@@ -38,3 +38,5 @@ const RestaurantMenuDetails = (props) => {
 }
 
 export default RestaurantMenuDetails;
+
+

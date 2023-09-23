@@ -13,20 +13,20 @@ const Body = () => {
     const [restaurantsObj, setRestaurantsObj] = useState(null);
 
     useEffect(() => {
-        dispatch(getRestaurants());// SAGA 9
-        //fetchDataFromServerandPrepareObjects();
+        //dispatch(getRestaurants());// SAGA 9
+        fetchDataFromServerandPrepareObjects();
         //saveUsers();
-        prepareFoodInfo(restaurants);
-    }, [dispatch]);
+        // prepareFoodInfo(restaurants);
+    }, [/*dispatch*/]);
 
     // This method designed before saga
-    /*const fetchDataFromServerandPrepareObjects = async () => {
+    const fetchDataFromServerandPrepareObjects = async () => {
         const responseFromServer = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.5294194&lng=78.47596720000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const response = await responseFromServer.json();
         if (response?.data?.cards) {
             prepareFoodInfo(response.data.cards);
         }
-    }*/
+    }
 
     const saveUsers = async () => {
         const user = {
@@ -74,7 +74,7 @@ const Body = () => {
     }
 
     return (
-        <div style={{ color: "black", marginLeft: "100px", borderRadius: "10px" }}>
+        <div style={{ color: "white", marginLeft: "50px", marginRight: "50px", padding: "30px", borderRadius: "10px", backgroundColor: "#573b8a", background: "url(https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38)", boxShadow: "5px 20px 50px #000" }}>
             {recommendationsObj &&
                 <div>
                     <h1>Best offers for you</h1>

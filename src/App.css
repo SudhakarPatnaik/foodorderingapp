@@ -47,13 +47,14 @@
 }
 
 .res-card {
-  background-color: "#573b8a";
+  background-color: "white";
   margin: 5px;
   height: 100%;
   width: 300px;
   font-weight: bolder;
   padding: 5px;
   motion: inherit;
+  border-radius: 10px;
 }
 
 .recom-card {
@@ -80,6 +81,7 @@
   font-family: cursive;
   font-size: 11px;
   font-weight: 500;
+  color: grey;
 }
 
 .dish-container {

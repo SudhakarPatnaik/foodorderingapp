@@ -102,7 +102,7 @@ const cartItems = useSelector((store) => store.cart.items);
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ REDUX - SAGA
 
-STEP 1 : 
+STEP 1 : install redux saga => npm i redux-saga
 STEP 2 :
 STEP 3 : create restaurantSlice.js
 STEP 4 : 

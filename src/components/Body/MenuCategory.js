@@ -17,7 +17,7 @@ const MenuCategory = ({ category }) => {
 
     return (
         <div>
-            <div id="expand" onClick={toggleMenuItems} style={{ backgroundColor: "grey", display: "flex", flexWrap: "wrap", justifyContent: "space-between", margin: "10px", padding: "20px", borderRadius: "10px" }}>
+            <div id="expand" onClick={toggleMenuItems} style={{ backgroundColor: "#573b8a", color: "white", fontWeight: "bold", display: "flex", flexWrap: "wrap", justifyContent: "space-between", margin: "10px", padding: "20px", borderRadius: "10px" }}>
                 <div onClick={() => setToggle(!toggle)}>
                     {category.card.card.title}
                 </div>
@@ -27,7 +27,7 @@ const MenuCategory = ({ category }) => {
 
                 {toggle &&
                     category.card.card.itemCards.map((dish) => (
-                        <div style={{ margin: "10px", display: "flex", justifyContent: "space-between", flexBasis: "100%", borderRadius: "5px", padding: "5px", backgroundColor: "white" }}>
+                        <div style={{ color: "black", margin: "10px", display: "flex", justifyContent: "space-between", flexBasis: "100%", borderRadius: "5px", padding: "5px", backgroundColor: "grey" }}>
                             <div style={{}}>
                                 <div>{dish.card.info.name}</div>
                                 <div>{(dish.card.info.price) / 100}</div>

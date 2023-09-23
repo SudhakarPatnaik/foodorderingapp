@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import star from "../../assets/preview.jpg";
+import star from "../../assets/preview.png";
 import { Link } from "react-router-dom";
 
 const Restaurant = (props) => {
@@ -31,57 +31,6 @@ const Restaurant = (props) => {
         }
     }
 
-    const fetchMoreRecords = async () => {
-        console.log("API triggered");
-        const request =
-        {
-            "lat": 17.5294194,
-            "lng": 78.47596720000001,
-            "nextOffset": "COVCELQ4KIDI17Hdz9f7YDCnEw==",
-            "widgetOffset": {
-                "NewListingView_category_bar_chicletranking_TwoRows_Rendition": "",
-                "Restaurant_Group_WebView_PB_Theme": "",
-                "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo": "10",
-                "inlineFacetFilter": "",
-                "restaurantCountWidget": ""
-            },
-            "filters": {},
-            "seoParams": {
-                "seoUrl": "https://www.swiggy.com/",
-                "pageType": "FOOD_HOMEPAGE",
-                "apiName": "FoodHomePage"
-            },
-            "page_type": "DESKTOP_WEB_LISTING",
-            "_csrf": "zTcf1TCe904u-WIT3VGFmMHyh-9NGqpvbpFthvng"
-        }
-        let options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;',
-                /*':authority': 'www.swiggy.com',
-                ':path': '/dapi/restaurants/list/update',
-                ':scheme': 'https',
-                '__fetch_req__': 'true',*/
-                'Accept': '*/*',
-                /*'Accept-Encoding': 'gzip, deflate, br',
-                'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7',
-                'Cache-Control': 'no-cache',
-                'Content-Length': '524',*/
-                'Content-Type': ' application/json'
-            },
-            body: JSON.stringify(request)
-        }
-        // Fake api for making post requests
-        let fetchRes = fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/update",
-            options);
-        fetchRes.then(res =>
-            res.json()).then(d => {
-                console.log(d)
-            })
-
-    }
-
     const options = {
         root: null,
         rootMargin: "0px",
@@ -103,7 +52,7 @@ const Restaurant = (props) => {
     return (
         <div className="res-container">
             {props.restaurants && props.restaurants.map((restaurant) => (
-                <div className="res-card">
+                <div className="res-card" style={{ backgroundColor: "#573b8a", background: "url(https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38)", boxShadow: "5px 20px 50px #000" }}>
                     <Link to={"/foodDetails/" + restaurant?.info?.id}>
                         <img className="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurant.info.cloudinaryImageId} />
                     </Link>
@@ -120,7 +69,6 @@ const Restaurant = (props) => {
             {!props.restaurants &&
                 <div>Loading.......</div>
             }
-            <div class="more" ref={containerRef}>lazy loading</div>
         </div>
     );
 }

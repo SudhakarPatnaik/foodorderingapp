@@ -49,7 +49,7 @@ const Container = () => {
     }, [])
 
     return (
-        <div>
+        <div style={{ backgroundColor: "rgb(36, 36, 62)", color: "white" }}>
             <RouterProvider router={appRouter} />
         </div>
     )
